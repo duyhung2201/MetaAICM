@@ -1,0 +1,170 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# ---------------------------------------------------------------------------
+# "OrdererOrgs" - Definition of organizations managing orderer nodes
+# ---------------------------------------------------------------------------
+OrdererOrgs:
+    # ---------------------------------------------------------------------------
+    # Orderer
+    # ---------------------------------------------------------------------------
+    - Name: Orderer
+      Domain: example.com
+      EnableNodeOUs: true
+      # ---------------------------------------------------------------------------
+      # "Specs" - See PeerOrgs for complete description
+      # ---------------------------------------------------------------------------
+      Specs:
+          - Hostname: orderer
+            SANS:
+                - localhost
+          - Hostname: orderer2
+            SANS:
+                - localhost
+          - Hostname: orderer3
+            SANS:
+                - localhost
+          - Hostname: orderer4
+            SANS:
+                - localhost
+          - Hostname: orderer5
+            SANS:
+                - localhost
+          - Hostname: orderer6
+            SANS:
+                - localhost
+          - Hostname: orderer7
+            SANS:
+                - localhost
+          - Hostname: orderer8
+            SANS:
+                - localhost
+          - Hostname: orderer9
+            SANS:
+                - localhost
+          - Hostname: orderer10
+            SANS:
+                - localhost
+          - Hostname: orderer11
+            SANS:
+                - localhost
+          - Hostname: orderer12
+            SANS:
+                - localhost
+          - Hostname: orderer13
+            SANS:
+                - localhost
+          - Hostname: orderer14
+            SANS:
+                - localhost
+          - Hostname: orderer15
+            SANS:
+                - localhost
+          - Hostname: orderer16
+            SANS:
+                - localhost
+          - Hostname: orderer17
+            SANS:
+                - localhost
+          - Hostname: orderer18
+            SANS:
+                - localhost
+          - Hostname: orderer19
+            SANS:
+                - localhost
+          - Hostname: orderer20
+            SANS:
+                - localhost
+          - Hostname: orderer21
+            SANS:
+                - localhost
+          - Hostname: orderer22
+            SANS:
+                - localhost
+          - Hostname: orderer23
+            SANS:
+                - localhost
+          - Hostname: orderer24
+            SANS:
+                - localhost
+          - Hostname: orderer25
+            SANS:
+                - localhost
+          - Hostname: orderer26
+            SANS:
+                - localhost
+          - Hostname: orderer27
+            SANS:
+                - localhost
+          - Hostname: orderer28
+            SANS:
+                - localhost
+          - Hostname: orderer29
+            SANS:
+                - localhost
+          - Hostname: orderer30
+            SANS:
+                - localhost
+          - Hostname: orderer31
+            SANS:
+                - localhost
+          - Hostname: orderer32
+            SANS:
+                - localhost
+          - Hostname: orderer33
+            SANS:
+                - localhost
+          - Hostname: orderer34
+            SANS:
+                - localhost
+          - Hostname: orderer35
+            SANS:
+                - localhost
+          - Hostname: orderer36
+            SANS:
+                - localhost
+          - Hostname: orderer37
+            SANS:
+                - localhost
+          - Hostname: orderer38
+            SANS:
+                - localhost
+          - Hostname: orderer39
+            SANS:
+                - localhost
+          - Hostname: orderer40
+            SANS:
+                - localhost
+          - Hostname: orderer41
+            SANS:
+                - localhost
+          - Hostname: orderer42
+            SANS:
+                - localhost
+          - Hostname: orderer43
+            SANS:
+                - localhost
+          - Hostname: orderer44
+            SANS:
+                - localhost
+          - Hostname: orderer45
+            SANS:
+                - localhost
+          - Hostname: orderer46
+            SANS:
+                - localhost
+          - Hostname: orderer47
+            SANS:
+                - localhost
+          - Hostname: orderer48
+            SANS:
+                - localhost
+          - Hostname: orderer49
+            SANS:
+                - localhost
+          - Hostname: orderer50
+            SANS:
+                - localhost
+                

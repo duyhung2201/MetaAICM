@@ -1,0 +1,1880 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: "2"
+
+volumes:
+    peer0.org1.example.com:
+    peer0.org2.example.com:
+    orderer.example.com:
+    orderer2.example.com:
+    orderer3.example.com:
+    orderer4.example.com:
+    orderer5.example.com:
+    orderer6.example.com:
+    orderer7.example.com:
+    orderer8.example.com:
+    orderer9.example.com:
+    orderer10.example.com:
+    orderer11.example.com:
+    orderer12.example.com:
+    orderer13.example.com:
+    orderer14.example.com:
+    orderer15.example.com:
+    orderer16.example.com:
+    orderer17.example.com:
+    orderer18.example.com:
+    orderer19.example.com:
+    orderer20.example.com:
+    orderer21.example.com:
+    orderer22.example.com:
+    orderer23.example.com:
+    orderer24.example.com:
+    orderer25.example.com:
+    orderer26.example.com:
+    orderer27.example.com:
+    orderer28.example.com:
+    orderer29.example.com:
+    orderer30.example.com:
+    orderer31.example.com:
+    orderer32.example.com:
+    orderer33.example.com:
+    orderer34.example.com:
+    orderer35.example.com:
+    orderer36.example.com:
+    orderer37.example.com:
+    orderer38.example.com:
+    orderer39.example.com:
+    orderer40.example.com:
+    orderer41.example.com:
+    orderer42.example.com:
+    orderer43.example.com:
+    orderer44.example.com:
+    orderer45.example.com:
+    orderer46.example.com:
+    orderer47.example.com:
+    orderer48.example.com:
+    orderer49.example.com:
+    orderer50.example.com:
+
+networks:
+    test:
+        name: fabric_test
+
+services:
+    peer0.org1.example.com:
+        container_name: peer0.org1.example.com
+        image: hyperledger/fabric-peer:2.3
+        environment:
+            #Generic peer variables
+            - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+            - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+            - FABRIC_LOGGING_SPEC=INFO
+            #- FABRIC_LOGGING_SPEC=DEBUG
+            - CORE_PEER_TLS_ENABLED=true
+            - CORE_PEER_PROFILE_ENABLED=true
+            - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+            - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+            - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+            # Peer specific variabes
+            - CORE_PEER_ID=peer0.org1.example.com
+            - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
+            - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+            - CORE_PEER_CHAINCODEADDRESS=peer0.org1.example.com:7052
+            - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+            - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.example.com:7051
+            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.example.com:7051
+            - CORE_PEER_LOCALMSPID=Org1MSP
+            - CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:17051
+        volumes:
+            - /var/run/docker.sock:/host/var/run/docker.sock
+            - ../organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
+            - ../organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls:/etc/hyperledger/fabric/tls
+            - peer0.org1.example.com:/var/hyperledger/production
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+        command: peer node start
+        ports:
+            - 7051:7051
+            - 17051:17051
+        networks:
+            - test
+
+    peer0.org2.example.com:
+        container_name: peer0.org2.example.com
+        image: hyperledger/fabric-peer:2.3
+        environment:
+            #Generic peer variables
+            - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+            - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+            - FABRIC_LOGGING_SPEC=INFO
+            #- FABRIC_LOGGING_SPEC=DEBUG
+            - CORE_PEER_TLS_ENABLED=true
+            - CORE_PEER_PROFILE_ENABLED=true
+            - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+            - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+            - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+            # Peer specific variabes
+            - CORE_PEER_ID=peer0.org2.example.com
+            - CORE_PEER_ADDRESS=peer0.org2.example.com:9051
+            - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
+            - CORE_PEER_CHAINCODEADDRESS=peer0.org2.example.com:9052
+            - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
+            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.example.com:9051
+            - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.example.com:9051
+            - CORE_PEER_LOCALMSPID=Org2MSP
+            - CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:19051
+        volumes:
+            - /var/run/docker.sock:/host/var/run/docker.sock
+            - ../organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp:/etc/hyperledger/fabric/msp
+            - ../organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls:/etc/hyperledger/fabric/tls
+            - peer0.org2.example.com:/var/hyperledger/production
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+        command: peer node start
+        ports:
+            - 9051:9051
+            - 19051:19051
+        networks:
+            - test
+
+    cli:
+        container_name: cli
+        image: hyperledger/fabric-tools:2.3
+        tty: true
+        stdin_open: true
+        environment:
+            - GOPATH=/opt/gopath
+            - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+            - FABRIC_LOGGING_SPEC=INFO
+            #- FABRIC_LOGGING_SPEC=DEBUG
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+        command: /bin/bash
+        volumes:
+            - /var/run/:/host/var/run/
+            - ../organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations
+            - ../scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
+        depends_on:
+            - peer0.org1.example.com
+            - peer0.org2.example.com
+        networks:
+            - test
+
+    orderer.example.com:
+        container_name: orderer.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=7050
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:17050
+            - ORDERER_OPERATIONS_METRICSPROVIDER=prometheus
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 7050:7050
+            - 17050:17050
+        networks:
+            - test
+
+    orderer2.example.com:
+        container_name: orderer2.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8002
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18002
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer2.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8002:8002
+            - 18002:18002
+        networks:
+            - test
+
+    orderer3.example.com:
+        container_name: orderer3.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8003
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18003
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer3.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8003:8003
+            - 18003:18003
+        networks:
+            - test
+
+    orderer4.example.com:
+        container_name: orderer4.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8004
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18004
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer4.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8004:8004
+            - 18004:18004
+        networks:
+            - test
+
+    orderer5.example.com:
+        container_name: orderer5.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8005
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18005
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer5.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer5.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8005:8005
+            - 18005:18005
+        networks:
+            - test
+
+    orderer6.example.com:
+        container_name: orderer6.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8006
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18006
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer6.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer6.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer6.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8006:8006
+            - 18006:18006
+        networks:
+            - test
+
+    orderer7.example.com:
+        container_name: orderer7.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8007
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18007
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer7.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer7.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer7.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8007:8007
+            - 18007:18007
+        networks:
+            - test
+
+    orderer8.example.com:
+        container_name: orderer8.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8008
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18008
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer8.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer8.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer8.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8008:8008
+            - 18008:18008
+        networks:
+            - test
+
+    orderer9.example.com:
+        container_name: orderer9.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8009
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18009
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer9.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer9.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer9.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8009:8009
+            - 18009:18009
+        networks:
+            - test
+
+    orderer10.example.com:
+        container_name: orderer10.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8010
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18010
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer10.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer10.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer10.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8010:8010
+            - 18010:18010
+        networks:
+            - test
+
+    orderer11.example.com:
+        container_name: orderer11.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8011
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18011
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer11.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer11.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer11.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8011:8011
+            - 18011:18011
+        networks:
+            - test
+
+    orderer12.example.com:
+        container_name: orderer12.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8012
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18012
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer12.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer12.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer12.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8012:8012
+            - 18012:18012
+        networks:
+            - test
+
+    orderer13.example.com:
+        container_name: orderer13.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8013
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18013
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer13.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer13.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer13.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8013:8013
+            - 18013:18013
+        networks:
+            - test
+
+    orderer14.example.com:
+        container_name: orderer14.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8014
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18014
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer14.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer14.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer14.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8014:8014
+            - 18014:18014
+        networks:
+            - test
+
+    orderer15.example.com:
+        container_name: orderer15.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8015
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18015
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer15.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer15.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer15.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8015:8015
+            - 18015:18015
+        networks:
+            - test
+
+    orderer16.example.com:
+        container_name: orderer16.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8016
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18016
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer16.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer16.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer16.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8016:8016
+            - 18016:18016
+        networks:
+            - test
+
+    orderer17.example.com:
+        container_name: orderer17.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8017
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18017
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer17.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer17.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer17.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8017:8017
+            - 18017:18017
+        networks:
+            - test
+
+    orderer18.example.com:
+        container_name: orderer18.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8018
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18018
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer18.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer18.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer18.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8018:8018
+            - 18018:18018
+        networks:
+            - test
+
+    orderer19.example.com:
+        container_name: orderer19.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8019
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18019
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer19.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer19.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer19.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8019:8019
+            - 18019:18019
+        networks:
+            - test
+
+    orderer20.example.com:
+        container_name: orderer20.example.com
+        image: hyperledger/fabric-orderer:2.3
+        environment:
+            - FABRIC_LOGGING_SPEC=INFO
+            - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+            - ORDERER_GENERAL_LISTENPORT=8020
+            - ORDERER_GENERAL_GENESISMETHOD=file
+            - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+            - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+            - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:18020
+            # enabled TLS
+            - ORDERER_GENERAL_TLS_ENABLED=true
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+            - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+            - ORDERER_KAFKA_VERBOSE=true
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+            - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer20.example.com/msp:/var/hyperledger/orderer/msp
+            - ../organizations/ordererOrganizations/example.com/orderers/orderer20.example.com/tls/:/var/hyperledger/orderer/tls
+            - orderer20.example.com:/var/hyperledger/production/orderer
+        ports:
+            - 8020:8020
+            - 18020:18020
+        networks:
+            - test
+
+    orderer21.example.com:
+      container_name: orderer21.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8021
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer21.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer21.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer21.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8021:8021
+
+      networks:
+        - test
+
+    orderer22.example.com:
+      container_name: orderer22.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8022
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer22.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer22.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer22.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8022:8022
+
+      networks:
+        - test
+
+    orderer23.example.com:
+      container_name: orderer23.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8023
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer23.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer23.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer23.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8023:8023
+
+      networks:
+        - test
+
+    orderer24.example.com:
+      container_name: orderer24.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8024
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer24.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer24.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer24.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8024:8024
+
+      networks:
+        - test
+
+    orderer25.example.com:
+      container_name: orderer25.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8025
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer25.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer25.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer25.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8025:8025
+
+      networks:
+        - test
+
+    orderer26.example.com:
+      container_name: orderer26.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8026
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer26.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer26.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer26.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8026:8026
+
+      networks:
+        - test
+
+    orderer27.example.com:
+      container_name: orderer27.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8027
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer27.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer27.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer27.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8027:8027
+
+      networks:
+        - test
+
+    orderer28.example.com:
+      container_name: orderer28.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8028
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer28.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer28.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer28.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8028:8028
+
+      networks:
+        - test
+
+    orderer29.example.com:
+      container_name: orderer29.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8029
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer29.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer29.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer29.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8029:8029
+
+      networks:
+        - test
+
+    orderer30.example.com:
+      container_name: orderer30.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8030
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer30.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer30.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer30.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8030:8030
+
+      networks:
+        - test
+
+    orderer31.example.com:
+      container_name: orderer31.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8031
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer31.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8031:8031
+
+      networks:
+        - test
+
+    orderer32.example.com:
+      container_name: orderer32.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8032
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer32.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8032:8032
+
+      networks:
+        - test
+
+    orderer33.example.com:
+      container_name: orderer33.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8033
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer33.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8033:8033
+
+      networks:
+        - test
+
+    orderer34.example.com:
+      container_name: orderer34.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8034
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer34.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8034:8034
+
+      networks:
+        - test
+
+    orderer35.example.com:
+      container_name: orderer35.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8035
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer35.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8035:8035
+      networks:
+        - test
+
+    orderer36.example.com:
+      container_name: orderer36.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8036
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer36.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8036:8036
+    
+      networks:
+        - test
+
+    orderer37.example.com:
+      container_name: orderer37.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8037
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer37.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8037:8037
+    
+      networks:
+        - test
+
+    orderer38.example.com:
+      container_name: orderer38.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8038
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer38.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8038:8038
+    
+      networks:
+        - test
+
+    orderer39.example.com:
+      container_name: orderer39.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8039
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer39.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8039:8039
+    
+      networks:
+        - test
+
+    orderer40.example.com:
+      container_name: orderer40.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8040
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer40.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8040:8040
+      networks:
+        - test
+
+    orderer41.example.com:
+      container_name: orderer41.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8041
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer41.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8041:8041
+    
+      networks:
+        - test
+
+    orderer42.example.com:
+      container_name: orderer42.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8042
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer42.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8042:8042
+    
+      networks:
+        - test
+
+    orderer43.example.com:
+      container_name: orderer43.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8043
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer43.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8043:8043
+    
+      networks:
+        - test
+
+    orderer44.example.com:
+      container_name: orderer44.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8044
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer44.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8044:8044
+    
+      networks:
+        - test
+
+    orderer45.example.com:
+      container_name: orderer45.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8045
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer45.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8045:8045
+    
+      networks:
+        - test
+
+    orderer46.example.com:
+      container_name: orderer46.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8046
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer46.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8046:8046
+    
+      networks:
+        - test
+
+    orderer47.example.com:
+      container_name: orderer47.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8047
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer47.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8047:8047
+    
+      networks:
+        - test
+
+    orderer48.example.com:
+      container_name: orderer48.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8048
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer48.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8048:8048
+    
+      networks:
+        - test
+
+    orderer49.example.com:
+      container_name: orderer49.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8049
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer49.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8049:8049
+    
+      networks:
+        - test
+
+    orderer50.example.com:
+      container_name: orderer50.example.com
+      image: hyperledger/fabric-orderer:2.3
+      environment:
+        - FABRIC_LOGGING_SPEC=INFO
+        - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+        - ORDERER_GENERAL_LISTENPORT=8050
+        - ORDERER_GENERAL_GENESISMETHOD=file
+        - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+        - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+        - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+        # enabled TLS
+        - ORDERER_GENERAL_TLS_ENABLED=true
+        - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+        - ORDERER_KAFKA_VERBOSE=true
+        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+        - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+      command: orderer
+      volumes:
+          - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/msp:/var/hyperledger/orderer/msp
+          - ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/tls/:/var/hyperledger/orderer/tls
+          - orderer50.example.com:/var/hyperledger/production/orderer
+      ports:
+        - 8050:8050
+    
+      networks:
+        - test

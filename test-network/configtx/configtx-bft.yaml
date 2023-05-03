@@ -1,0 +1,1012 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+---
+################################################################################
+#
+#   Section: Organizations
+#
+#   - This section defines the different organizational identities which will
+#   be referenced later in the configuration.
+#
+################################################################################
+Organizations:
+    # SampleOrg defines an MSP using the sampleconfig.  It should never be used
+    # in production but may be used as a template for other definitions
+    - &OrdererOrg
+      # DefaultOrg defines the organization which is used in the sampleconfig
+      # of the fabric.git development environment
+      Name: OrdererOrg
+
+      # ID to load the MSP definition as
+      ID: OrdererMSP
+
+      # MSPDir is the filesystem path which contains the MSP configuration
+      MSPDir: ../organizations/ordererOrganizations/example.com/msp
+
+      # Policies defines the set of policies at this level of the config tree
+      # For organization policies, their canonical path is usually
+      #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+      Policies:
+          Readers:
+              Type: Signature
+              Rule: "OR('OrdererMSP.member')"
+          Writers:
+              Type: Signature
+              Rule: "OR('OrdererMSP.member')"
+          Admins:
+              Type: Signature
+              Rule: "OR('OrdererMSP.admin')"
+
+      OrdererEndpoints:
+          - orderer.example.com:7050
+          - orderer2.example.com:8002
+          - orderer3.example.com:8003
+          - orderer4.example.com:8004
+          - orderer5.example.com:8005
+          - orderer6.example.com:8006
+          - orderer7.example.com:8007
+          - orderer8.example.com:8008
+          - orderer9.example.com:8009
+          - orderer10.example.com:8010
+          - orderer11.example.com:8011
+          - orderer12.example.com:8012
+          - orderer13.example.com:8013
+          - orderer14.example.com:8014
+          - orderer15.example.com:8015
+          - orderer16.example.com:8016
+          - orderer17.example.com:8017
+          - orderer18.example.com:8018
+          - orderer19.example.com:8019
+          - orderer20.example.com:8020
+          - orderer21.example.com:8021
+          - orderer22.example.com:8022
+          - orderer23.example.com:8023
+          - orderer24.example.com:8024
+          - orderer25.example.com:8025
+          - orderer26.example.com:8026
+          - orderer27.example.com:8027
+          - orderer28.example.com:8028
+          - orderer29.example.com:8029
+          - orderer30.example.com:8030
+          - orderer31.example.com:8031
+          - orderer32.example.com:8032
+          - orderer33.example.com:8033
+          - orderer34.example.com:8034
+          - orderer35.example.com:8035
+          - orderer36.example.com:8036
+          - orderer37.example.com:8037
+          - orderer38.example.com:8038
+          - orderer39.example.com:8039
+          - orderer40.example.com:8040
+          - orderer41.example.com:8041
+          - orderer42.example.com:8042
+          - orderer43.example.com:8043
+          - orderer44.example.com:8044
+          - orderer45.example.com:8045
+          - orderer46.example.com:8046
+          - orderer47.example.com:8047
+          - orderer48.example.com:8048
+          - orderer49.example.com:8049
+          - orderer50.example.com:8050
+
+
+    - &Org1
+      # DefaultOrg defines the organization which is used in the sampleconfig
+      # of the fabric.git development environment
+      Name: Org1MSP
+
+      # ID to load the MSP definition as
+      ID: Org1MSP
+
+      MSPDir: ../organizations/peerOrganizations/org1.example.com/msp
+
+      # Policies defines the set of policies at this level of the config tree
+      # For organization policies, their canonical path is usually
+      #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+      Policies:
+          Readers:
+              Type: Signature
+              Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
+          Writers:
+              Type: Signature
+              Rule: "OR('Org1MSP.admin', 'Org1MSP.client')"
+          Admins:
+              Type: Signature
+              Rule: "OR('Org1MSP.admin')"
+          Endorsement:
+              Type: Signature
+              Rule: "OR('Org1MSP.peer')"
+
+    - &Org2
+      # DefaultOrg defines the organization which is used in the sampleconfig
+      # of the fabric.git development environment
+      Name: Org2MSP
+
+      # ID to load the MSP definition as
+      ID: Org2MSP
+
+      MSPDir: ../organizations/peerOrganizations/org2.example.com/msp
+
+      # Policies defines the set of policies at this level of the config tree
+      # For organization policies, their canonical path is usually
+      #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+      Policies:
+          Readers:
+              Type: Signature
+              Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
+          Writers:
+              Type: Signature
+              Rule: "OR('Org2MSP.admin', 'Org2MSP.client')"
+          Admins:
+              Type: Signature
+              Rule: "OR('Org2MSP.admin')"
+          Endorsement:
+              Type: Signature
+              Rule: "OR('Org2MSP.peer')"
+
+################################################################################
+#
+#   SECTION: Capabilities
+#
+#   - This section defines the capabilities of fabric network. This is a new
+#   concept as of v1.1.0 and should not be utilized in mixed networks with
+#   v1.0.x peers and orderers.  Capabilities define features which must be
+#   present in a fabric binary for that binary to safely participate in the
+#   fabric network.  For instance, if a new MSP type is added, newer binaries
+#   might recognize and validate the signatures from this type, while older
+#   binaries without this support would be unable to validate those
+#   transactions.  This could lead to different versions of the fabric binaries
+#   having different world states.  Instead, defining a capability for a channel
+#   informs those binaries without this capability that they must cease
+#   processing transactions until they have been upgraded.  For v1.0.x if any
+#   capabilities are defined (including a map with all capabilities turned off)
+#   then the v1.0.x peer will deliberately crash.
+#
+################################################################################
+Capabilities:
+    # Channel capabilities apply to both the orderers and the peers and must be
+    # supported by both.
+    # Set the value of the capability to true to require it.
+    Channel: &ChannelCapabilities
+        # V2_0 capability ensures that orderers and peers behave according
+        # to v2.0 channel capabilities. Orderers and peers from
+        # prior releases would behave in an incompatible way, and are therefore
+        # not able to participate in channels at v2.0 capability.
+        # Prior to enabling V2.0 channel capabilities, ensure that all
+        # orderers and peers on a channel are at v2.0.0 or later.
+        V2_0: true
+
+    # Orderer capabilities apply only to the orderers, and may be safely
+    # used with prior release peers.
+    # Set the value of the capability to true to require it.
+    Orderer: &OrdererCapabilities
+        # V2_0 orderer capability ensures that orderers behave according
+        # to v2.0 orderer capabilities. Orderers from
+        # prior releases would behave in an incompatible way, and are therefore
+        # not able to participate in channels at v2.0 orderer capability.
+        # Prior to enabling V2.0 orderer capabilities, ensure that all
+        # orderers on channel are at v2.0.0 or later.
+        V2_0: true
+
+    # Application capabilities apply only to the peer network, and may be safely
+    # used with prior release orderers.
+    # Set the value of the capability to true to require it.
+    Application: &ApplicationCapabilities
+        # V2_0 application capability ensures that peers behave according
+        # to v2.0 application capabilities. Peers from
+        # prior releases would behave in an incompatible way, and are therefore
+        # not able to participate in channels at v2.0 application capability.
+        # Prior to enabling V2.0 application capabilities, ensure that all
+        # peers on channel are at v2.0.0 or later.
+        V2_0: true
+
+################################################################################
+#
+#   SECTION: Application
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for application related parameters
+#
+################################################################################
+Application: &ApplicationDefaults
+    # Organizations is the list of orgs which are defined as participants on
+    # the application side of the network
+    Organizations:
+
+    # Policies defines the set of policies at this level of the config tree
+    # For Application policies, their canonical path is
+    #   /Channel/Application/<PolicyName>
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        LifecycleEndorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
+        Endorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
+
+    Capabilities:
+        <<: *ApplicationCapabilities
+################################################################################
+#
+#   SECTION: Orderer
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for orderer related parameters
+#
+################################################################################
+Orderer: &OrdererDefaults # Orderer Type: The orderer implementation to start
+    OrdererType: etcdraft
+
+    # Addresses used to be the list of orderer addresses that clients and peers
+    # could connect to.  However, this does not allow clients to associate orderer
+    # addresses and orderer organizations which can be useful for things such
+    # as TLS validation.  The preferred way to specify orderer addresses is now
+    # to include the OrdererEndpoints item in your org definition
+    Addresses:
+        - orderer.example.com:7050
+        - orderer2.example.com:8002
+        - orderer3.example.com:8003
+        - orderer4.example.com:8004
+        - orderer5.example.com:8005
+        - orderer6.example.com:8006
+        - orderer7.example.com:8007
+        - orderer8.example.com:8008
+        - orderer9.example.com:8009
+        - orderer10.example.com:8010
+        - orderer11.example.com:8011
+        - orderer12.example.com:8012
+        - orderer13.example.com:8013
+        - orderer14.example.com:8014
+        - orderer15.example.com:8015
+        - orderer16.example.com:8016
+        - orderer17.example.com:8017
+        - orderer18.example.com:8018
+        - orderer19.example.com:8019
+        - orderer20.example.com:8020
+        - orderer21.example.com:8021
+        - orderer22.example.com:8022
+        - orderer23.example.com:8023
+        - orderer24.example.com:8024
+        - orderer25.example.com:8025
+        - orderer26.example.com:8026
+        - orderer27.example.com:8027
+        - orderer28.example.com:8028
+        - orderer29.example.com:8029
+        - orderer30.example.com:8030
+        - orderer31.example.com:8031
+        - orderer32.example.com:8032
+        - orderer33.example.com:8033
+        - orderer34.example.com:8034
+        - orderer35.example.com:8035
+        - orderer36.example.com:8036
+        - orderer37.example.com:8037
+        - orderer38.example.com:8038
+        - orderer39.example.com:8039
+        - orderer40.example.com:8040
+        - orderer41.example.com:8041
+        - orderer42.example.com:8042
+        - orderer43.example.com:8043
+        - orderer44.example.com:8044
+        - orderer45.example.com:8045
+        - orderer46.example.com:8046
+        - orderer47.example.com:8047
+        - orderer48.example.com:8048
+        - orderer49.example.com:8049
+        - orderer50.example.com:8050        
+
+    EtcdRaft:
+        Consenters:
+            - Host: orderer.example.com
+              Port: 7050
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+            - Host: orderer2.example.com
+              Port: 8002
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+            - Host: orderer3.example.com
+              Port: 8003
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+            - Host: orderer4.example.com
+              Port: 8004
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+            - Host: orderer5.example.com
+              Port: 8005
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/server.crt
+            - Host: orderer6.example.com
+              Port: 8006
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer6.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer6.example.com/tls/server.crt
+            - Host: orderer7.example.com
+              Port: 8007
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer7.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer7.example.com/tls/server.crt
+            - Host: orderer8.example.com
+              Port: 8008
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer8.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer8.example.com/tls/server.crt
+            - Host: orderer9.example.com
+              Port: 8009
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer9.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer9.example.com/tls/server.crt
+            - Host: orderer10.example.com
+              Port: 8010
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer10.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer10.example.com/tls/server.crt
+              
+            - Host: orderer11.example.com
+              Port: 8011
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer11.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer11.example.com/tls/server.crt
+            - Host: orderer12.example.com
+              Port: 8012
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer12.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer12.example.com/tls/server.crt
+            - Host: orderer13.example.com
+              Port: 8013
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer13.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer13.example.com/tls/server.crt
+            - Host: orderer14.example.com
+              Port: 8014
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer14.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer14.example.com/tls/server.crt
+            - Host: orderer15.example.com
+              Port: 8015
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer15.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer15.example.com/tls/server.crt
+            - Host: orderer16.example.com
+              Port: 8016
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer16.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer16.example.com/tls/server.crt
+            - Host: orderer17.example.com
+              Port: 8017
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer17.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer17.example.com/tls/server.crt
+            - Host: orderer18.example.com
+              Port: 8018
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer18.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer18.example.com/tls/server.crt
+            - Host: orderer19.example.com
+              Port: 8019
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer19.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer19.example.com/tls/server.crt
+            - Host: orderer20.example.com
+              Port: 8020
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer20.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer20.example.com/tls/server.crt
+
+            - Host: orderer21.example.com
+              Port: 8021
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer21.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer21.example.com/tls/server.crt              
+            - Host: orderer22.example.com
+              Port: 8022
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer22.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer22.example.com/tls/server.crt              
+            - Host: orderer23.example.com
+              Port: 8023
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer23.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer23.example.com/tls/server.crt              
+            - Host: orderer24.example.com
+              Port: 8024
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer24.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer24.example.com/tls/server.crt              
+            - Host: orderer25.example.com
+              Port: 8025
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer25.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer25.example.com/tls/server.crt              
+
+            - Host: orderer26.example.com
+              Port: 8026
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer26.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer26.example.com/tls/server.crt              
+            - Host: orderer27.example.com
+              Port: 8027
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer27.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer27.example.com/tls/server.crt              
+            - Host: orderer28.example.com
+              Port: 8028
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer28.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer28.example.com/tls/server.crt              
+            - Host: orderer29.example.com
+              Port: 8029
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer29.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer29.example.com/tls/server.crt              
+            - Host: orderer30.example.com
+              Port: 8030
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer30.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer30.example.com/tls/server.crt              
+
+            - Host: orderer31.example.com
+              Port: 8031
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/tls/server.crt              
+            - Host: orderer32.example.com
+              Port: 8032
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/tls/server.crt              
+            - Host: orderer33.example.com
+              Port: 8033
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/tls/server.crt              
+            - Host: orderer34.example.com
+              Port: 8034
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/tls/server.crt              
+            - Host: orderer35.example.com
+              Port: 8035
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/tls/server.crt              
+
+            - Host: orderer36.example.com
+              Port: 8036
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/tls/server.crt              
+            - Host: orderer37.example.com
+              Port: 8037
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/tls/server.crt              
+            - Host: orderer38.example.com
+              Port: 8038
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/tls/server.crt              
+            - Host: orderer39.example.com
+              Port: 8039
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/tls/server.crt              
+            - Host: orderer40.example.com
+              Port: 8040
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/server.crt              
+
+            - Host: orderer41.example.com
+              Port: 8041
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/tls/server.crt              
+            - Host: orderer42.example.com
+              Port: 8042
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/tls/server.crt              
+            - Host: orderer43.example.com
+              Port: 8043
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/tls/server.crt              
+            - Host: orderer44.example.com
+              Port: 8044
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/tls/server.crt              
+            - Host: orderer45.example.com
+              Port: 8045
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/tls/server.crt              
+
+            - Host: orderer46.example.com
+              Port: 8046
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/tls/server.crt              
+            - Host: orderer47.example.com
+              Port: 8047
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/tls/server.crt              
+            - Host: orderer48.example.com
+              Port: 8048
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/tls/server.crt              
+            - Host: orderer49.example.com
+              Port: 8049
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/tls/server.crt              
+            - Host: orderer50.example.com
+              Port: 8050
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/tls/server.crt              
+
+    SmartBFT:
+        # The set of BFT replicas for this network.
+        Consenters:
+            - Host: orderer.example.com
+              Port: 7050
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/signcerts/orderer.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 1
+            - Host: orderer2.example.com
+              Port: 8002
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/msp/signcerts/orderer2.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 2
+            - Host: orderer3.example.com
+              Port: 8003
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/msp/signcerts/orderer3.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 3
+            - Host: orderer4.example.com
+              Port: 8004
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/msp/signcerts/orderer4.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 4
+            - Host: orderer5.example.com
+              Port: 8005
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer5.example.com/msp/signcerts/orderer5.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 5
+            
+            - Host: orderer6.example.com
+              Port: 8006
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer6.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer6.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer6.example.com/msp/signcerts/orderer6.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 6
+            - Host: orderer7.example.com
+              Port: 8007
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer7.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer7.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer7.example.com/msp/signcerts/orderer7.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 7
+            - Host: orderer8.example.com
+              Port: 8008
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer8.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer8.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer8.example.com/msp/signcerts/orderer8.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 8
+            - Host: orderer9.example.com
+              Port: 8009
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer9.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer9.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer9.example.com/msp/signcerts/orderer9.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 9
+            - Host: orderer10.example.com
+              Port: 8010
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer10.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer10.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer10.example.com/msp/signcerts/orderer10.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 10
+            
+            - Host: orderer11.example.com
+              Port: 8011
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer11.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer11.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer11.example.com/msp/signcerts/orderer11.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 11
+            - Host: orderer12.example.com
+              Port: 8012
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer12.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer12.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer12.example.com/msp/signcerts/orderer12.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 12
+            - Host: orderer13.example.com
+              Port: 8013
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer13.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer13.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer13.example.com/msp/signcerts/orderer13.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 13
+            - Host: orderer14.example.com
+              Port: 8014
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer14.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer14.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer14.example.com/msp/signcerts/orderer14.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 14
+            - Host: orderer15.example.com
+              Port: 8015
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer15.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer15.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer15.example.com/msp/signcerts/orderer15.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 15
+            - Host: orderer16.example.com
+              Port: 8016
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer16.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer16.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer16.example.com/msp/signcerts/orderer16.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 16
+            - Host: orderer17.example.com
+              Port: 8017
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer17.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer17.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer17.example.com/msp/signcerts/orderer17.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 17
+            - Host: orderer18.example.com
+              Port: 8018
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer18.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer18.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer18.example.com/msp/signcerts/orderer18.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 18
+            - Host: orderer19.example.com
+              Port: 8019
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer19.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer19.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer19.example.com/msp/signcerts/orderer19.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 19
+            - Host: orderer20.example.com
+              Port: 8020
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer20.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer20.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer20.example.com/msp/signcerts/orderer20.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 20
+
+            - Host: orderer21.example.com
+              Port: 8021
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer21.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer21.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer21.example.com/msp/signcerts/orderer21.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 21
+            - Host: orderer22.example.com
+              Port: 8022
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer22.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer22.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer22.example.com/msp/signcerts/orderer22.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 22
+            - Host: orderer23.example.com
+              Port: 8023
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer23.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer23.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer23.example.com/msp/signcerts/orderer23.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 23
+            - Host: orderer24.example.com
+              Port: 8024
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer24.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer24.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer24.example.com/msp/signcerts/orderer24.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 24
+            - Host: orderer25.example.com
+              Port: 8025
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer25.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer25.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer25.example.com/msp/signcerts/orderer25.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 25
+
+            - Host: orderer26.example.com
+              Port: 8026
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer26.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer26.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer26.example.com/msp/signcerts/orderer26.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 26
+            - Host: orderer27.example.com
+              Port: 8027
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer27.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer27.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer27.example.com/msp/signcerts/orderer27.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 27
+            - Host: orderer28.example.com
+              Port: 8028
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer28.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer28.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer28.example.com/msp/signcerts/orderer28.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 28
+            - Host: orderer29.example.com
+              Port: 8029
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer29.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer29.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer29.example.com/msp/signcerts/orderer29.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 29              
+            - Host: orderer30.example.com
+              Port: 8030
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer30.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer30.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer30.example.com/msp/signcerts/orderer30.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 30
+
+            - Host: orderer31.example.com
+              Port: 8031
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/msp/signcerts/orderer31.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 31
+            - Host: orderer32.example.com
+              Port: 8032
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/msp/signcerts/orderer32.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 32
+            - Host: orderer33.example.com
+              Port: 8033
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/msp/signcerts/orderer33.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 33
+            - Host: orderer34.example.com
+              Port: 8034
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/msp/signcerts/orderer34.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 34
+            - Host: orderer35.example.com
+              Port: 8035
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/msp/signcerts/orderer35.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 35
+
+            - Host: orderer36.example.com
+              Port: 8036
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/msp/signcerts/orderer36.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 36
+            - Host: orderer37.example.com
+              Port: 8037
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/msp/signcerts/orderer37.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 37
+            - Host: orderer38.example.com
+              Port: 8038
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/msp/signcerts/orderer38.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 38
+            - Host: orderer39.example.com
+              Port: 8039
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/msp/signcerts/orderer39.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 39
+            - Host: orderer40.example.com
+              Port: 8040
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/msp/signcerts/orderer40.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 40
+
+            - Host: orderer41.example.com
+              Port: 8041
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/msp/signcerts/orderer41.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 41
+            - Host: orderer42.example.com
+              Port: 8042
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/msp/signcerts/orderer42.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 42
+            - Host: orderer43.example.com
+              Port: 8043
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/msp/signcerts/orderer43.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 43
+            - Host: orderer44.example.com
+              Port: 8044
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/msp/signcerts/orderer44.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 44
+            - Host: orderer45.example.com
+              Port: 8045
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/msp/signcerts/orderer45.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 45
+
+            - Host: orderer46.example.com
+              Port: 8046
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/msp/signcerts/orderer46.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 46
+            - Host: orderer47.example.com
+              Port: 8047
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/msp/signcerts/orderer47.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 47
+            - Host: orderer48.example.com
+              Port: 8048
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/msp/signcerts/orderer48.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 48
+            - Host: orderer49.example.com
+              Port: 8049
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/msp/signcerts/orderer49.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 49
+            - Host: orderer50.example.com
+              Port: 8050
+              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/tls/server.crt
+              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/tls/server.crt
+              Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/msp/signcerts/orderer50.example.com-cert.pem
+              MSPID: OrdererMSP
+              ConsenterId: 50
+
+
+    # Batch Timeout: The amount of time to wait before creating a batch
+    BatchTimeout: 2s
+
+    # Batch Size: Controls the number of messages batched into a block
+    BatchSize:
+        # Max Message Count: The maximum number of messages to permit in a batch
+        MaxMessageCount: 500
+
+        # Absolute Max Bytes: The absolute maximum number of bytes allowed for
+        # the serialized messages in a batch.
+        AbsoluteMaxBytes: 99 MB
+
+        # Preferred Max Bytes: The preferred maximum number of bytes allowed for
+        # the serialized messages in a batch. A message larger than the preferred
+        # max bytes will result in a batch larger than preferred max bytes.
+        PreferredMaxBytes: 512 KB
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the orderer side of the network
+    Organizations:
+
+    # Policies defines the set of policies at this level of the config tree
+    # For Orderer policies, their canonical path is
+    #   /Channel/Orderer/<PolicyName>
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        # BlockValidation specifies what signatures must be included in the block
+        # from the orderer for the peer to validate it.
+        BlockValidation:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+
+################################################################################
+#
+#   CHANNEL
+#
+#   This section defines the values to encode into a config transaction or
+#   genesis block for channel related parameters.
+#
+################################################################################
+Channel: &ChannelDefaults
+    # Policies defines the set of policies at this level of the config tree
+    # For Channel policies, their canonical path is
+    #   /Channel/<PolicyName>
+    Policies:
+        # Who may invoke the 'Deliver' API
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        # Who may invoke the 'Broadcast' API
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        # By default, who may modify elements at this config level
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+
+    # Capabilities describes the channel level capabilities, see the
+    # dedicated Capabilities section elsewhere in this file for a full
+    # description
+    Capabilities:
+        <<: *ChannelCapabilities
+
+################################################################################
+#
+#   Profile
+#
+#   - Different configuration profiles may be encoded here to be specified
+#   as parameters to the configtxgen tool
+#
+################################################################################
+Profiles:
+    TwoOrgsOrdererGenesisRaft:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *Org1
+                    - *Org2
+    TwoOrgsChannel:
+        Consortium: SampleConsortium
+        <<: *ChannelDefaults
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org2
+            Capabilities:
+                <<: *ApplicationCapabilities
+    TwoOrgsOrdererGenesisBft:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Policies:
+                Readers:
+                    Type: ImplicitMeta
+                    Rule: ANY Readers
+                Writers:
+                    Type: ImplicitMeta
+                    Rule: ANY Writers
+                Admins:
+                    Type: ImplicitMeta
+                    Rule: MAJORITY Admins
+                BlockValidation:
+                    Type: ImplicitOrderer
+                    Rule: SMARTBFT
+            OrdererType: smartbft
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *Org1
+                    - *Org2

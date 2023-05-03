@@ -1,0 +1,601 @@
+test:
+    workers:
+        number: 50
+    rounds:
+        # - label: Init ML Task 100.          
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 100
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 100.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 100
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 100.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 100
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 200.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 200
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+
+        # - label: Submit model 200.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 200
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 200.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 200
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 300.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 300
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 300.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 300
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 300.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 300
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 400.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 400
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 400.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 400
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 400.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 400
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 500.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 500
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 500.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 500
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 500.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 500
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        - label: Init ML Task 600.
+          txDuration: 5
+          rateControl:
+              type: fixed-rate
+              opts:
+                  tps: 600
+
+          workload:
+              module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        - label: Submit model 600.
+          txDuration: 5
+          rateControl:
+              type: fixed-rate
+              opts:
+                  tps: 600
+          workload:
+              module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+              arguments:
+                  limit: 600
+        # - label: Query ML task 600.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 600
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 700.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 700
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 700.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 700
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 700.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 700
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 800.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 800
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 800.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 800
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 800.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 800
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 900.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 900
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 900.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 900
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 900.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 900
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 1000.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1000
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 1000.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1000
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 1000.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1000
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+        
+        # - label: Init ML Task 1100.          
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1100
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 1100.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1100
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 1100.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1100
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 1200.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1200
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+
+        # - label: Submit model 1200.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1200
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 1200.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1200
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 1300.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1300
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 1300.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1300
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 1300.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1300
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 1400.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1400
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 1400.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1400
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 1400.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1400
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 1500.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1500
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 1500.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1500
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 1500.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1500
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 1600.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1600
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 1600.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1600
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 1600.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1600
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 1700.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1700
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 1700.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1700
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 1700.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1700
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 1800.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1800
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 1800.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1800
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 1800.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1800
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 1900.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1900
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 1900.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1900
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 1900.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 1900
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
+
+        # - label: Init ML Task 2000.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 2000
+
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/initMLTask.js
+        # - label: Submit model 2000.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 2000
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/submitModel.js
+        #       arguments:
+        #           limit: 600
+        # - label: Query ML task 2000.
+        #   txDuration: 5
+        #   rateControl:
+        #       type: fixed-rate
+        #       opts:
+        #           tps: 2000
+        #   workload:
+        #       module: benchmarks/samples/fabric/MetaCrowd/queryMLTask.js
+        #       arguments:
+        #           limit: 600
