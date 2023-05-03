@@ -18,3 +18,5 @@ The [chaincode](MetaCrowdChaincode) is written in Javascript and composed of 3 m
 ## Benchmark
 [Hyperledger Caliper](caliper-benchmarks), a blockchain performance benchmark tool, is used to generate transaction workload and monitor the performance of the simulated network. The work- load consists of mixed read and write transactions that invoke different smart contract functions. Accordingly, transactions are injected into MetaCrowd with different speeds to evaluate the system performance in different network conditions, from low to high and even extreme workloads.
 For more detail, take a look at [caliper-benchmarks](caliper-benchmarks/README.md).
+
+Duc was here!
