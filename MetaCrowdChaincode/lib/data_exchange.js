@@ -148,7 +148,7 @@ class DataExchangeContract extends Contract {
             [taskId]
         );
         //results =[true, flase, ....]
-        const task = JSON.parse(this.queryTask(taskId));
+        const task = JSON.parse(await this.queryTask(taskId));
         const taskOwner = this.ctx.clientIdentity.getID();
 
         if (task.taskOwner !== taskOwner) {
@@ -179,7 +179,7 @@ class DataExchangeContract extends Contract {
     }
 
     async unlockDeposit(taskId) {
-        const task = JSON.parse(this.queryTask(taskId));
+        const task = JSON.parse(await this.queryTask(taskId));
         const taskOwner = this.ctx.clientIdentity.getID();
         if (task.taskOwner !== taskOwner) {
             throw new Error('authentication fail');
@@ -207,7 +207,7 @@ class DataExchangeContract extends Contract {
         dataHash,
         disputeDescription
     ) {
-        const task = JSON.parse(this.queryTask(taskId));
+        const task = JSON.parse(await this.queryTask(taskId));
         const user = this.ctx.clientIdentity.getID();
         const dataset = task.datasets[datasetIndex];
         if (dataset.user !== user || dataset.rewardDistributed) {
@@ -272,7 +272,7 @@ class DataExchangeContract extends Contract {
         dispute.resolved = true;
         dispute.result = result;
 
-        const task = JSON.parse(this.queryTask(taskId));
+        const task = JSON.parse(await this.queryTask(taskId));
         if (result) {
             // Reward the user if the dispute is resolved in their favor
             await this.tokenERC20Contract._transfer(
