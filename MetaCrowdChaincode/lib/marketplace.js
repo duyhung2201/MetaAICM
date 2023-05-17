@@ -83,7 +83,7 @@ class MarketplaceContract extends Contract {
 
 		// Update the counter value on the ledger
 		await this.ctx.stub.putState(
-			reqCounterKey,
+			buyReqCounterKey,
 			Buffer.from(counterValue.toString())
 		);
 
@@ -117,7 +117,7 @@ class MarketplaceContract extends Contract {
 		return itemId;
 	}
 
-	async buyRequest(itemId) {
+	async buyRequest(itemId, encryptionKey) {
 		const buyer = this.ctx.clientIdentity.getID();
 		const item = JSON.parse(await this.queryItem(itemId));
 
