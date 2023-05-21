@@ -81,16 +81,16 @@ Organizations:
           - orderer38.example.com:8038
           - orderer39.example.com:8039
           - orderer40.example.com:8040
-          - orderer41.example.com:8041
-          - orderer42.example.com:8042
-          - orderer43.example.com:8043
-          - orderer44.example.com:8044
-          - orderer45.example.com:8045
-          - orderer46.example.com:8046
-          - orderer47.example.com:8047
-          - orderer48.example.com:8048
-          - orderer49.example.com:8049
-          - orderer50.example.com:8050
+          # - orderer41.example.com:8041
+          # - orderer42.example.com:8042
+          # - orderer43.example.com:8043
+          # - orderer44.example.com:8044
+          # - orderer45.example.com:8045
+          # - orderer46.example.com:8046
+          # - orderer47.example.com:8047
+          # - orderer48.example.com:8048
+          # - orderer49.example.com:8049
+          # - orderer50.example.com:8050
 
 
     - &Org1
@@ -474,47 +474,47 @@ Orderer: &OrdererDefaults # Orderer Type: The orderer implementation to start
               ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/server.crt
               ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/server.crt              
 
-            - Host: orderer41.example.com
-              Port: 8041
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/tls/server.crt              
-            - Host: orderer42.example.com
-              Port: 8042
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/tls/server.crt              
-            - Host: orderer43.example.com
-              Port: 8043
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/tls/server.crt              
-            - Host: orderer44.example.com
-              Port: 8044
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/tls/server.crt              
-            - Host: orderer45.example.com
-              Port: 8045
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/tls/server.crt              
+            # - Host: orderer41.example.com
+            #   Port: 8041
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer41.example.com/tls/server.crt              
+            # - Host: orderer42.example.com
+            #   Port: 8042
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer42.example.com/tls/server.crt              
+            # - Host: orderer43.example.com
+            #   Port: 8043
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer43.example.com/tls/server.crt              
+            # - Host: orderer44.example.com
+            #   Port: 8044
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer44.example.com/tls/server.crt              
+            # - Host: orderer45.example.com
+            #   Port: 8045
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer45.example.com/tls/server.crt              
 
-            - Host: orderer46.example.com
-              Port: 8046
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/tls/server.crt              
-            - Host: orderer47.example.com
-              Port: 8047
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/tls/server.crt              
-            - Host: orderer48.example.com
-              Port: 8048
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/tls/server.crt              
-            - Host: orderer49.example.com
-              Port: 8049
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/tls/server.crt              
-            - Host: orderer50.example.com
-              Port: 8050
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/tls/server.crt              
+            # - Host: orderer46.example.com
+            #   Port: 8046
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer46.example.com/tls/server.crt              
+            # - Host: orderer47.example.com
+            #   Port: 8047
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer47.example.com/tls/server.crt              
+            # - Host: orderer48.example.com
+            #   Port: 8048
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer48.example.com/tls/server.crt              
+            # - Host: orderer49.example.com
+            #   Port: 8049
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer49.example.com/tls/server.crt              
+            # - Host: orderer50.example.com
+            #   Port: 8050
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer50.example.com/tls/server.crt              
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s

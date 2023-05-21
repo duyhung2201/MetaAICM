@@ -283,7 +283,7 @@ chaincodeQuery() {
 }
 
 ## package the chaincode
-# packageChaincode
+packageChaincode
 
 ## Install chaincode on peer0.org1 and peer0.org2
 infoln "Installing chaincode on peer0.org1..."
