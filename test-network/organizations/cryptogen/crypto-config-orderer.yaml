@@ -107,36 +107,36 @@ OrdererOrgs:
           - Hostname: orderer30
             SANS:
                 - localhost
-          - Hostname: orderer31
-            SANS:
-                - localhost
-          - Hostname: orderer32
-            SANS:
-                - localhost
-          - Hostname: orderer33
-            SANS:
-                - localhost
-          - Hostname: orderer34
-            SANS:
-                - localhost
-          - Hostname: orderer35
-            SANS:
-                - localhost
-          - Hostname: orderer36
-            SANS:
-                - localhost
-          - Hostname: orderer37
-            SANS:
-                - localhost
-          - Hostname: orderer38
-            SANS:
-                - localhost
-          - Hostname: orderer39
-            SANS:
-                - localhost
-          - Hostname: orderer40
-            SANS:
-                - localhost
+          # - Hostname: orderer31
+          #   SANS:
+          #       - localhost
+          # - Hostname: orderer32
+          #   SANS:
+          #       - localhost
+          # - Hostname: orderer33
+          #   SANS:
+          #       - localhost
+          # - Hostname: orderer34
+          #   SANS:
+          #       - localhost
+          # - Hostname: orderer35
+          #   SANS:
+          #       - localhost
+          # - Hostname: orderer36
+          #   SANS:
+          #       - localhost
+          # - Hostname: orderer37
+          #   SANS:
+          #       - localhost
+          # - Hostname: orderer38
+          #   SANS:
+          #       - localhost
+          # - Hostname: orderer39
+          #   SANS:
+          #       - localhost
+          # - Hostname: orderer40
+          #   SANS:
+          #       - localhost
           # - Hostname: orderer41
           #   SANS:
           #       - localhost

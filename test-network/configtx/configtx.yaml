@@ -71,16 +71,16 @@ Organizations:
           - orderer28.example.com:8028
           - orderer29.example.com:8029
           - orderer30.example.com:8030
-          - orderer31.example.com:8031
-          - orderer32.example.com:8032
-          - orderer33.example.com:8033
-          - orderer34.example.com:8034
-          - orderer35.example.com:8035
-          - orderer36.example.com:8036
-          - orderer37.example.com:8037
-          - orderer38.example.com:8038
-          - orderer39.example.com:8039
-          - orderer40.example.com:8040
+          # - orderer31.example.com:8031
+          # - orderer32.example.com:8032
+          # - orderer33.example.com:8033
+          # - orderer34.example.com:8034
+          # - orderer35.example.com:8035
+          # - orderer36.example.com:8036
+          # - orderer37.example.com:8037
+          # - orderer38.example.com:8038
+          # - orderer39.example.com:8039
+          # - orderer40.example.com:8040
           # - orderer41.example.com:8041
           # - orderer42.example.com:8042
           # - orderer43.example.com:8043
@@ -285,26 +285,26 @@ Orderer: &OrdererDefaults # Orderer Type: The orderer implementation to start
         - orderer28.example.com:8028
         - orderer29.example.com:8029
         - orderer30.example.com:8030
-        - orderer31.example.com:8031
-        - orderer32.example.com:8032
-        - orderer33.example.com:8033
-        - orderer34.example.com:8034
-        - orderer35.example.com:8035
-        - orderer36.example.com:8036
-        - orderer37.example.com:8037
-        - orderer38.example.com:8038
-        - orderer39.example.com:8039
-        - orderer40.example.com:8040
-        - orderer41.example.com:8041
-        - orderer42.example.com:8042
-        - orderer43.example.com:8043
-        - orderer44.example.com:8044
-        - orderer45.example.com:8045
-        - orderer46.example.com:8046
-        - orderer47.example.com:8047
-        - orderer48.example.com:8048
-        - orderer49.example.com:8049
-        - orderer50.example.com:8050        
+        # - orderer31.example.com:8031
+        # - orderer32.example.com:8032
+        # - orderer33.example.com:8033
+        # - orderer34.example.com:8034
+        # - orderer35.example.com:8035
+        # - orderer36.example.com:8036
+        # - orderer37.example.com:8037
+        # - orderer38.example.com:8038
+        # - orderer39.example.com:8039
+        # - orderer40.example.com:8040
+        # - orderer41.example.com:8041
+        # - orderer42.example.com:8042
+        # - orderer43.example.com:8043
+        # - orderer44.example.com:8044
+        # - orderer45.example.com:8045
+        # - orderer46.example.com:8046
+        # - orderer47.example.com:8047
+        # - orderer48.example.com:8048
+        # - orderer49.example.com:8049
+        # - orderer50.example.com:8050        
 
     EtcdRaft:
         Consenters:
@@ -432,47 +432,47 @@ Orderer: &OrdererDefaults # Orderer Type: The orderer implementation to start
               ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer30.example.com/tls/server.crt
               ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer30.example.com/tls/server.crt              
 
-            - Host: orderer31.example.com
-              Port: 8031
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/tls/server.crt              
-            - Host: orderer32.example.com
-              Port: 8032
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/tls/server.crt              
-            - Host: orderer33.example.com
-              Port: 8033
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/tls/server.crt              
-            - Host: orderer34.example.com
-              Port: 8034
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/tls/server.crt              
-            - Host: orderer35.example.com
-              Port: 8035
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/tls/server.crt              
+            # - Host: orderer31.example.com
+            #   Port: 8031
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer31.example.com/tls/server.crt              
+            # - Host: orderer32.example.com
+            #   Port: 8032
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer32.example.com/tls/server.crt              
+            # - Host: orderer33.example.com
+            #   Port: 8033
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer33.example.com/tls/server.crt              
+            # - Host: orderer34.example.com
+            #   Port: 8034
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer34.example.com/tls/server.crt              
+            # - Host: orderer35.example.com
+            #   Port: 8035
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer35.example.com/tls/server.crt              
 
-            - Host: orderer36.example.com
-              Port: 8036
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/tls/server.crt              
-            - Host: orderer37.example.com
-              Port: 8037
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/tls/server.crt              
-            - Host: orderer38.example.com
-              Port: 8038
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/tls/server.crt              
-            - Host: orderer39.example.com
-              Port: 8039
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/tls/server.crt              
-            - Host: orderer40.example.com
-              Port: 8040
-              ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/server.crt              
+            # - Host: orderer36.example.com
+            #   Port: 8036
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer36.example.com/tls/server.crt              
+            # - Host: orderer37.example.com
+            #   Port: 8037
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer37.example.com/tls/server.crt              
+            # - Host: orderer38.example.com
+            #   Port: 8038
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer38.example.com/tls/server.crt              
+            # - Host: orderer39.example.com
+            #   Port: 8039
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer39.example.com/tls/server.crt              
+            # - Host: orderer40.example.com
+            #   Port: 8040
+            #   ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/server.crt
+            #   ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer40.example.com/tls/server.crt              
 
             # - Host: orderer41.example.com
             #   Port: 8041
