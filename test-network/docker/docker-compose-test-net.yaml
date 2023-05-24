@@ -66,7 +66,7 @@ networks:
 services:
     peer0.org1.example.com:
         container_name: peer0.org1.example.com
-        image: hyperledger/fabric-peer:2.3
+        image: hyperledger/fabric-peer:2.4.9
         environment:
             #Generic peer variables
             - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
@@ -103,7 +103,7 @@ services:
 
     peer0.org2.example.com:
         container_name: peer0.org2.example.com
-        image: hyperledger/fabric-peer:2.3
+        image: hyperledger/fabric-peer:2.4.9
         environment:
             #Generic peer variables
             - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
@@ -140,7 +140,7 @@ services:
 
     cli:
         container_name: cli
-        image: hyperledger/fabric-tools:2.3
+        image: hyperledger/fabric-tools:2.4.9
         tty: true
         stdin_open: true
         environment:
@@ -162,7 +162,7 @@ services:
 
     orderer.example.com:
         container_name: orderer.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -198,7 +198,7 @@ services:
 
     orderer2.example.com:
         container_name: orderer2.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -233,7 +233,7 @@ services:
 
     orderer3.example.com:
         container_name: orderer3.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -268,7 +268,7 @@ services:
 
     orderer4.example.com:
         container_name: orderer4.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -303,7 +303,7 @@ services:
 
     orderer5.example.com:
         container_name: orderer5.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -338,7 +338,7 @@ services:
 
     orderer6.example.com:
         container_name: orderer6.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -373,7 +373,7 @@ services:
 
     orderer7.example.com:
         container_name: orderer7.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -408,7 +408,7 @@ services:
 
     orderer8.example.com:
         container_name: orderer8.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -443,7 +443,7 @@ services:
 
     orderer9.example.com:
         container_name: orderer9.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -478,7 +478,7 @@ services:
 
     orderer10.example.com:
         container_name: orderer10.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -513,7 +513,7 @@ services:
 
     orderer11.example.com:
         container_name: orderer11.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -548,7 +548,7 @@ services:
 
     orderer12.example.com:
         container_name: orderer12.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -583,7 +583,7 @@ services:
 
     orderer13.example.com:
         container_name: orderer13.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -618,7 +618,7 @@ services:
 
     orderer14.example.com:
         container_name: orderer14.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -653,7 +653,7 @@ services:
 
     orderer15.example.com:
         container_name: orderer15.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -688,7 +688,7 @@ services:
 
     orderer16.example.com:
         container_name: orderer16.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -723,7 +723,7 @@ services:
 
     orderer17.example.com:
         container_name: orderer17.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -758,7 +758,7 @@ services:
 
     orderer18.example.com:
         container_name: orderer18.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -793,7 +793,7 @@ services:
 
     orderer19.example.com:
         container_name: orderer19.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -828,7 +828,7 @@ services:
 
     orderer20.example.com:
         container_name: orderer20.example.com
-        image: hyperledger/fabric-orderer:2.3
+        image: hyperledger/fabric-orderer:2.4.9
         environment:
             - FABRIC_LOGGING_SPEC=INFO
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -863,7 +863,7 @@ services:
 
     orderer21.example.com:
       container_name: orderer21.example.com
-      image: hyperledger/fabric-orderer:2.3
+      image: hyperledger/fabric-orderer:2.4.9
       environment:
         - FABRIC_LOGGING_SPEC=INFO
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -897,7 +897,7 @@ services:
 
     orderer22.example.com:
       container_name: orderer22.example.com
-      image: hyperledger/fabric-orderer:2.3
+      image: hyperledger/fabric-orderer:2.4.9
       environment:
         - FABRIC_LOGGING_SPEC=INFO
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -931,7 +931,7 @@ services:
 
     orderer23.example.com:
       container_name: orderer23.example.com
-      image: hyperledger/fabric-orderer:2.3
+      image: hyperledger/fabric-orderer:2.4.9
       environment:
         - FABRIC_LOGGING_SPEC=INFO
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -965,7 +965,7 @@ services:
 
     orderer24.example.com:
       container_name: orderer24.example.com
-      image: hyperledger/fabric-orderer:2.3
+      image: hyperledger/fabric-orderer:2.4.9
       environment:
         - FABRIC_LOGGING_SPEC=INFO
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -999,7 +999,7 @@ services:
 
     orderer25.example.com:
       container_name: orderer25.example.com
-      image: hyperledger/fabric-orderer:2.3
+      image: hyperledger/fabric-orderer:2.4.9
       environment:
         - FABRIC_LOGGING_SPEC=INFO
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1033,7 +1033,7 @@ services:
 
     orderer26.example.com:
       container_name: orderer26.example.com
-      image: hyperledger/fabric-orderer:2.3
+      image: hyperledger/fabric-orderer:2.4.9
       environment:
         - FABRIC_LOGGING_SPEC=INFO
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1067,7 +1067,7 @@ services:
 
     orderer27.example.com:
       container_name: orderer27.example.com
-      image: hyperledger/fabric-orderer:2.3
+      image: hyperledger/fabric-orderer:2.4.9
       environment:
         - FABRIC_LOGGING_SPEC=INFO
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1101,7 +1101,7 @@ services:
 
     orderer28.example.com:
       container_name: orderer28.example.com
-      image: hyperledger/fabric-orderer:2.3
+      image: hyperledger/fabric-orderer:2.4.9
       environment:
         - FABRIC_LOGGING_SPEC=INFO
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1135,7 +1135,7 @@ services:
 
     orderer29.example.com:
       container_name: orderer29.example.com
-      image: hyperledger/fabric-orderer:2.3
+      image: hyperledger/fabric-orderer:2.4.9
       environment:
         - FABRIC_LOGGING_SPEC=INFO
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1169,7 +1169,7 @@ services:
 
     orderer30.example.com:
       container_name: orderer30.example.com
-      image: hyperledger/fabric-orderer:2.3
+      image: hyperledger/fabric-orderer:2.4.9
       environment:
         - FABRIC_LOGGING_SPEC=INFO
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1203,7 +1203,7 @@ services:
 
     # orderer31.example.com:
     #   container_name: orderer31.example.com
-    #   image: hyperledger/fabric-orderer:2.3
+    #   image: hyperledger/fabric-orderer:2.4.9
     #   environment:
     #     - FABRIC_LOGGING_SPEC=INFO
     #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1237,7 +1237,7 @@ services:
 
     # orderer32.example.com:
     #   container_name: orderer32.example.com
-    #   image: hyperledger/fabric-orderer:2.3
+    #   image: hyperledger/fabric-orderer:2.4.9
     #   environment:
     #     - FABRIC_LOGGING_SPEC=INFO
     #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1271,7 +1271,7 @@ services:
 
     # orderer33.example.com:
     #   container_name: orderer33.example.com
-    #   image: hyperledger/fabric-orderer:2.3
+    #   image: hyperledger/fabric-orderer:2.4.9
     #   environment:
     #     - FABRIC_LOGGING_SPEC=INFO
     #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1305,7 +1305,7 @@ services:
 
     # orderer34.example.com:
     #   container_name: orderer34.example.com
-    #   image: hyperledger/fabric-orderer:2.3
+    #   image: hyperledger/fabric-orderer:2.4.9
     #   environment:
     #     - FABRIC_LOGGING_SPEC=INFO
     #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1339,7 +1339,7 @@ services:
 
     # orderer35.example.com:
     #   container_name: orderer35.example.com
-    #   image: hyperledger/fabric-orderer:2.3
+    #   image: hyperledger/fabric-orderer:2.4.9
     #   environment:
     #     - FABRIC_LOGGING_SPEC=INFO
     #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1372,7 +1372,7 @@ services:
 
     # orderer36.example.com:
     #   container_name: orderer36.example.com
-    #   image: hyperledger/fabric-orderer:2.3
+    #   image: hyperledger/fabric-orderer:2.4.9
     #   environment:
     #     - FABRIC_LOGGING_SPEC=INFO
     #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1406,7 +1406,7 @@ services:
 
     # orderer37.example.com:
     #   container_name: orderer37.example.com
-    #   image: hyperledger/fabric-orderer:2.3
+    #   image: hyperledger/fabric-orderer:2.4.9
     #   environment:
     #     - FABRIC_LOGGING_SPEC=INFO
     #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1440,7 +1440,7 @@ services:
 
     # orderer38.example.com:
     #   container_name: orderer38.example.com
-    #   image: hyperledger/fabric-orderer:2.3
+    #   image: hyperledger/fabric-orderer:2.4.9
     #   environment:
     #     - FABRIC_LOGGING_SPEC=INFO
     #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1474,7 +1474,7 @@ services:
 
     # orderer39.example.com:
     #   container_name: orderer39.example.com
-    #   image: hyperledger/fabric-orderer:2.3
+    #   image: hyperledger/fabric-orderer:2.4.9
     #   environment:
     #     - FABRIC_LOGGING_SPEC=INFO
     #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1508,7 +1508,7 @@ services:
 
     # orderer40.example.com:
     #   container_name: orderer40.example.com
-    #   image: hyperledger/fabric-orderer:2.3
+    #   image: hyperledger/fabric-orderer:2.4.9
     #   environment:
     #     - FABRIC_LOGGING_SPEC=INFO
     #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1541,7 +1541,7 @@ services:
 
     # # orderer41.example.com:
     # #   container_name: orderer41.example.com
-    # #   image: hyperledger/fabric-orderer:2.3
+    # #   image: hyperledger/fabric-orderer:2.4.9
     # #   environment:
     # #     - FABRIC_LOGGING_SPEC=INFO
     # #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1575,7 +1575,7 @@ services:
 
     # # orderer42.example.com:
     # #   container_name: orderer42.example.com
-    # #   image: hyperledger/fabric-orderer:2.3
+    # #   image: hyperledger/fabric-orderer:2.4.9
     # #   environment:
     # #     - FABRIC_LOGGING_SPEC=INFO
     # #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1609,7 +1609,7 @@ services:
 
     # # orderer43.example.com:
     # #   container_name: orderer43.example.com
-    # #   image: hyperledger/fabric-orderer:2.3
+    # #   image: hyperledger/fabric-orderer:2.4.9
     # #   environment:
     # #     - FABRIC_LOGGING_SPEC=INFO
     # #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1643,7 +1643,7 @@ services:
 
     # # orderer44.example.com:
     # #   container_name: orderer44.example.com
-    # #   image: hyperledger/fabric-orderer:2.3
+    # #   image: hyperledger/fabric-orderer:2.4.9
     # #   environment:
     # #     - FABRIC_LOGGING_SPEC=INFO
     # #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1677,7 +1677,7 @@ services:
 
     # # orderer45.example.com:
     # #   container_name: orderer45.example.com
-    # #   image: hyperledger/fabric-orderer:2.3
+    # #   image: hyperledger/fabric-orderer:2.4.9
     # #   environment:
     # #     - FABRIC_LOGGING_SPEC=INFO
     # #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1711,7 +1711,7 @@ services:
 
     # # orderer46.example.com:
     # #   container_name: orderer46.example.com
-    # #   image: hyperledger/fabric-orderer:2.3
+    # #   image: hyperledger/fabric-orderer:2.4.9
     # #   environment:
     # #     - FABRIC_LOGGING_SPEC=INFO
     # #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1745,7 +1745,7 @@ services:
 
     # # orderer47.example.com:
     # #   container_name: orderer47.example.com
-    # #   image: hyperledger/fabric-orderer:2.3
+    # #   image: hyperledger/fabric-orderer:2.4.9
     # #   environment:
     # #     - FABRIC_LOGGING_SPEC=INFO
     # #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1779,7 +1779,7 @@ services:
 
     # # orderer48.example.com:
     # #   container_name: orderer48.example.com
-    # #   image: hyperledger/fabric-orderer:2.3
+    # #   image: hyperledger/fabric-orderer:2.4.9
     # #   environment:
     # #     - FABRIC_LOGGING_SPEC=INFO
     # #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1813,7 +1813,7 @@ services:
 
     # # orderer49.example.com:
     # #   container_name: orderer49.example.com
-    # #   image: hyperledger/fabric-orderer:2.3
+    # #   image: hyperledger/fabric-orderer:2.4.9
     # #   environment:
     # #     - FABRIC_LOGGING_SPEC=INFO
     # #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -1847,7 +1847,7 @@ services:
 
     # # orderer50.example.com:
     # #   container_name: orderer50.example.com
-    # #   image: hyperledger/fabric-orderer:2.3
+    # #   image: hyperledger/fabric-orderer:2.4.9
     # #   environment:
     # #     - FABRIC_LOGGING_SPEC=INFO
     # #     - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
