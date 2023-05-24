@@ -90,17 +90,11 @@ class MarketplaceContract extends Contract {
 		return counterValue;
 	}
 
-	async initItem(
-		// itemId,
-		itemDescriptionLink,
-		price,
-		proof
-	) {
+	async initItem(itemId, itemDescriptionLink, price, proof) {
 		const itemOwner = this.ctx.clientIdentity.getID();
 
-		const itemId = await this.increaseItemCount();
+		// const itemId = await this.increaseItemCount();
 		const item = {
-			itemId,
 			itemOwner,
 			itemDescriptionLink,
 			price,
@@ -117,7 +111,7 @@ class MarketplaceContract extends Contract {
 		return itemId;
 	}
 
-	async buyRequest(itemId, encryptionKey) {
+	async buyRequest(itemId, reqId, encryptionKey) {
 		const buyer = this.ctx.clientIdentity.getID();
 		const item = JSON.parse(await this.queryItem(itemId));
 
@@ -130,7 +124,7 @@ class MarketplaceContract extends Contract {
 			item.price
 		);
 
-		const reqId = await this.increaseBuyReqCount();
+		// const reqId = await this.increaseBuyReqCount();
 		const req = {
 			buyer,
 			itemId,

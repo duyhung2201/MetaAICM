@@ -162,16 +162,21 @@ class CrowdMetaContract extends Contract {
 		return await ctx.reputationContract.getReputation(user);
 	}
 
-	async initSellingItem(ctx, itemDescriptionLink, price, proof) {
+	async initSellingItem(ctx, itemId, itemDescriptionLink, price, proof) {
 		return await ctx.marketplaceContract.initItem(
+			itemId,
 			itemDescriptionLink,
 			price,
 			proof
 		);
 	}
 
-	async buyRequest(ctx, itemId, encryptionKey) {
-		return await ctx.marketplaceContract.buyRequest(itemId, encryptionKey);
+	async buyRequest(ctx, itemId, reqId, encryptionKey) {
+		return await ctx.marketplaceContract.buyRequest(
+			itemId,
+			reqId,
+			encryptionKey
+		);
 	}
 
 	async querySellingItem(ctx, itemId) {
