@@ -1,0 +1,459 @@
+test:
+  workers:
+    number: 100
+  rounds:
+    - label: Init item 2000.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 2000
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+    - label: Init item 1900.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1900
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 1800.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1800
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 1700.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1700
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 1600.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1600
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 1500.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1500
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 1400.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1400
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 1300.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1300
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 1200.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1200
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 1100.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1100
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 1000.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1000
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 900.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 900
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 800.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 800
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 700.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 700
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 600.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 600
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 500.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 500
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 400.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 400
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 300.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 300
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 200.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 200
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000
+
+    - label: Init item 100.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 100
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/initItem.js
+        arguments:
+          limit: 1000          
+
+    - label: Purchase item 2000.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 2000
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+    - label: Purchase item 1900.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1900
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 1800.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1800
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 1700.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1700
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 1600.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1600
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 1500.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1500
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 1400.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1400
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 1300.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1300
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 1200.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1200
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 1100.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1100
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 1000.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1000
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 900.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 900
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 800.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 800
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 700.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 700
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 600.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 600
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 500.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 500
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 400.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 400
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 300.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 300
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 200.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 200
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000
+
+    - label: Purchase item 100.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 100
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/purchase.js
+        arguments:
+          limit: 1000          
+
+    - label: Query 2000.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 2000
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/queryItem.js    
+
+    - label: Query 100.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 100
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/Marketplace/queryItem.js

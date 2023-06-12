@@ -40,7 +40,7 @@ caliper:
     # Report file-related options
     report:
         # The absolute or workspace-relative path of the report file.
-        path: 'report.html'
+        path: 'report-fulfil-purchase.html'
         # The options to pass to fs.writeFile
         options:
             flag: 'w'
