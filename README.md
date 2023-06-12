@@ -1,6 +1,6 @@
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
-# MetaCrowd: Blockchain-Empowered Metaverse via Decentralized Machine Learning Crowdsourcing
+# Blockchain-Empowered Metaverse: Decentralized Marketplace and Crowdsourcing System for Trading Data and Machine Learning Models
 
 ## Getting started
 
