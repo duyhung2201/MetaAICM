@@ -1,0 +1,245 @@
+test:
+  workers:
+    number: 100
+  rounds:
+    # - label: Init MLTask 2000.
+    #   txDuration: 30
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 2000
+    #   workload:
+    #     module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/initMLTask.js
+    #     arguments:
+    #       limit: 1000
+
+    # - label: Submit model 2000.
+    #   txDuration: 30
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 200
+    #   workload:
+    #     module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/submitModel.js
+    #     arguments:
+    #       limit: 1000
+
+    - label: Evaluate model 2000.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 2000
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 1900.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1900
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 1800.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1800
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 1700.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1700
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 1600.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1600
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 1500.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1500
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 1400.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1400
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 1300.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1300
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 1200.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1200
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 1100.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1100
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 1000.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 1000
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 900.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 900
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 800.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 800
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 700.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 700
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 600.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 600
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 500.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 500
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 400.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 400
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 300.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 300
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 200.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 200
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000
+
+    - label: Evaluate model 100.
+      txDuration: 30
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 100
+      workload:
+        module: benchmarks/samples/fabric/MetaCrowd/ModelExchange/evaluateModel.js
+        arguments:
+          limit: 1000          

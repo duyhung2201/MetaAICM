@@ -19,7 +19,7 @@ set -o pipefail
 
 case $1 in
   metacrowd)
-    export BENCHCONFIG=benchmarks/samples/fabric/MetaCrowd/config.yaml
+    export BENCHCONFIG=benchmarks/samples/fabric/MetaCrowd/config-marketplace-fulfil.yaml
     ;;
 esac
 

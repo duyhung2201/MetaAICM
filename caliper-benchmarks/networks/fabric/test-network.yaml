@@ -10,10 +10,6 @@ channels:
     # the chaincodeIDs of all the fabric chaincodes in caliper-benchmarks
     contracts:
     - id: metacrowd
-    - id: fixed-asset
-    - id: marbles
-    - id: simple
-    - id: smallbank
 
 organizations:
   - mspid: Org1MSP

@@ -19,9 +19,6 @@ const { WorkloadModuleBase } = require('@hyperledger/caliper-core');
 /**
  * Workload module for the benchmark round.
  */
-const ipfsURL =
-    'https://cloudflare-ipfs.com/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco/wiki/';
-
 class CreateCarWorkload extends WorkloadModuleBase {
     /**
      * Initializes the workload module instance.
@@ -35,52 +32,19 @@ class CreateCarWorkload extends WorkloadModuleBase {
      * Assemble TXs for the round.
      * @return {Promise<TxStatus[]>}
      */
-    // async initializeWorkloadModule(
-    //     workerIndex,
-    //     totalWorkers,
-    //     roundIndex,
-    //     roundArguments,
-    //     sutAdapter,
-    //     sutContext
-    // ) {
-    //     await super.initializeWorkloadModule(
-    //         workerIndex,
-    //         totalWorkers,
-    //         roundIndex,
-    //         roundArguments,
-    //         sutAdapter,
-    //         sutContext
-    //     );
 
-    //     let args = {
-    //         contractId: 'metacrowd',
-    //         contractVersion: 'v1',
-    //         contractFunction: 'Mint',
-    //         contractArguments: [1000],
-    //         timeout: 30,
-    //     };
-    //     await this.sutAdapter.sendRequests(args);
-    // }
     async submitTransaction() {
         this.txIndex++;
 
-        let taskId = this.workerIndex + '_Task' + this.txIndex.toString();
+        let itemId = this.workerIndex + '_Item' + this.txIndex.toString();
 
         let args = {
             contractId: 'metacrowd',
             contractVersion: 'v1',
-            contractFunction: 'initMLTask',
-            contractArguments: [
-                taskId,
-                Date.now() + 100000000,
-                ipfsURL,
-                0,
-                ipfsURL,
-                10,
-                0,
-            ], //taskId, deadline, taskDescriptionLink, paymentPerModel, testDataHash, maxParticipants, minReputation
-            readOnly: false,
-        };
+            contractFunction: 'querySellingItem',
+            contractArguments: [itemId],
+            readOnly: true
+        };      
 
         await this.sutAdapter.sendRequests(args);
     }
