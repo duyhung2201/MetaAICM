@@ -70,7 +70,7 @@ class CreateCarWorkload extends WorkloadModuleBase {
 			contractId: "dam",
 			contractVersion: "v1",
 			contractFunction: "listItem",
-			contractArguments: [10, null, 0.1, itemId],
+			contractArguments: ["10", "", "0.1", itemId],
 			readOnly: false,
 		};
 

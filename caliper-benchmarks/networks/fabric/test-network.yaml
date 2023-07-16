@@ -10,6 +10,7 @@ channels:
     # the chaincodeIDs of all the fabric chaincodes in caliper-benchmarks
     contracts:
     - id: metacrowd
+    - id: dam
 
 organizations:
   - mspid: Org1MSP

@@ -21,6 +21,9 @@ case $1 in
   metacrowd)
     export BENCHCONFIG=benchmarks/samples/fabric/MetaCrowd/config-marketplace-fulfil.yaml
     ;;
+  dam)
+    export BENCHCONFIG=benchmarks/samples/fabric/DAM/config.yaml
+    ;;
 esac
 
 npx caliper launch manager --caliper-workspace ./ --caliper-networkconfig networks/fabric/test-network.yaml --caliper-benchconfig $BENCHCONFIG --caliper-flow-only-test --caliper-fabric-gateway-enabled --Caliper-UserConfig config.yaml
