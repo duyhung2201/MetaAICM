@@ -3,7 +3,6 @@
 const stringify = require("json-stringify-deterministic");
 const sortKeysRecursive = require("sort-keys-recursive");
 const { Contract } = require("fabric-contract-api");
-const crypto = require("crypto");
 const itemCounterKey = "item_counter";
 const buyReqCounterKey = "buy_req_counter";
 
@@ -81,15 +80,9 @@ class DigitalAssetContract extends Contract {
 		return counterValue;
 	}
 
-	async listItem(
-		ctx,
-		price,
-		parentAsset,
-		commissionRate
-		// itemId
-	) {
-		const owner = ctx.clientIdentity.getID();
-		const itemId = await this.increaseItemCount();
+	async listItem(price, parentAsset, commissionRate, itemId) {
+		const owner = this.ctx.clientIdentity.getID();
+		// const itemId = await this.increaseItemCount();
 		const item = {
 			itemId,
 			owner,
@@ -125,8 +118,8 @@ class DigitalAssetContract extends Contract {
 		);
 	}
 
-	async updatePrice(ctx, itemId, newPrice) {
-		const sender = ctx.clientIdentity.getID();
+	async updatePrice(itemId, newPrice) {
+		const sender = this.ctx.clientIdentity.getID();
 		const item = JSON.parse(await this.queryItem(itemId));
 		if (item.owner !== sender) {
 			throw new Error("authentication fail");
@@ -142,8 +135,8 @@ class DigitalAssetContract extends Contract {
 		);
 	}
 
-	async registerRequest(ctx, itemId) {
-		const buyer = ctx.clientIdentity.getID();
+	async registerRequest(itemId, reqId) {
+		const buyer = this.ctx.clientIdentity.getID();
 		const item = JSON.parse(await this.queryItem(itemId));
 
 		if (buyer === item.owner) {
@@ -154,11 +147,11 @@ class DigitalAssetContract extends Contract {
 		}
 		await this.tokenERC20Contract.Transfer(
 			this.ctx,
-			this.getName(),
+			`${this.getName()}_${reqId}`,
 			item.price
 		);
 
-		const reqId = await this.increaseBuyReqCount();
+		// const reqId = await this.increaseBuyReqCount();
 		const req = {
 			price: item.price,
 			buyer,
@@ -174,7 +167,7 @@ class DigitalAssetContract extends Contract {
 		);
 
 		// Emit the event
-		ctx.stub.setEvent("registerRequest", {
+		this.ctx.stub.setEvent("registerRequest", {
 			customerId: buyer,
 			fundAmount: item.price,
 		});
@@ -215,7 +208,7 @@ class DigitalAssetContract extends Contract {
 		encryptedSymmetricKey,
 		ipfsURI
 	) {
-		const sender = ctx.clientIdentity.getID();
+		const sender = this.ctx.clientIdentity.getID();
 		const req = JSON.parse(await this._queryBuyReq(buyReqId));
 		const item = JSON.parse(await this.queryItem(req.itemId));
 		if (req.ipfsURI) {
@@ -244,7 +237,7 @@ class DigitalAssetContract extends Contract {
 	}
 
 	async compareHashes(buyReqId, customerHash) {
-		const sender = ctx.clientIdentity.getID();
+		const sender = this.ctx.clientIdentity.getID();
 		const req = JSON.parse(await this._queryBuyReq(buyReqId));
 		const item = JSON.parse(await this.queryItem(req.itemId));
 
@@ -261,26 +254,29 @@ class DigitalAssetContract extends Contract {
 		if (customerHash !== req.encryptedFileHash) {
 			await this.tokenERC20Contract._transfer(
 				this.ctx,
-				this.getName(),
+				`${this.getName()}_${buyReqId}`,
 				sender,
 				req.price
 			);
 		} else {
-			const commissionFee = item.commissionRate * req.price;
+			let commissionFee = 0;
 			const parentAsset = JSON.parse(
 				await this.queryItem(item.parentAsset)
 			);
+			if (!!parentAsset) {
+				commissionFee = parentAsset.commissionRate * req.price;
+				await this.tokenERC20Contract._transfer(
+					this.ctx,
+					`${this.getName()}_${buyReqId}`,
+					parentAsset.owner,
+					commissionFee
+				);
+			}
 			await this.tokenERC20Contract._transfer(
 				this.ctx,
-				this.getName(),
+				`${this.getName()}_${buyReqId}`,
 				item.owner,
 				req.price - commissionFee
-			);
-			await this.tokenERC20Contract._transfer(
-				this.ctx,
-				this.getName(),
-				parentAsset.owner,
-				commissionFee
 			);
 		}
 		req.active = false;

@@ -44,18 +44,12 @@ class DAMContract extends Contract {
 		return await ctx.digitalAssetContract.queryItem(itemId);
 	}
 
-	async listItem(
-		ctx,
-		price,
-		parentAsset,
-		commissionRate
-		// itemId
-	) {
+	async listItem(ctx, price, parentAsset, commissionRate, itemId) {
 		return await ctx.digitalAssetContract.listItem(
-			taskId,
 			price,
 			parentAsset,
-			commissionRate
+			commissionRate,
+			itemId
 		);
 	}
 
@@ -67,8 +61,8 @@ class DAMContract extends Contract {
 		return await ctx.digitalAssetContract.updatePrice(itemId, newPrice);
 	}
 
-	async registerRequest(ctx, itemId) {
-		return await ctx.digitalAssetContract.registerRequest(itemId);
+	async registerRequest(ctx, itemId, reqId) {
+		return await ctx.digitalAssetContract.registerRequest(itemId, reqId);
 	}
 
 	async cancelRequest(ctx, buyReqId) {

@@ -1,0 +1,12 @@
+test:
+    workers:
+        number: 50
+    rounds:
+        - label: List item 600.
+          txDuration: 5
+          rateControl:
+              type: fixed-rate
+              opts:
+                  tps: 600
+          workload:
+              module: benchmarks/samples/fabric/DAM/listItem.js
