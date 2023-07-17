@@ -4,10 +4,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-'use strict';
+"use strict";
 
-const CrowdMetaContract = require('./lib/crowd_meta');
+const DamContract = require("./lib/dam");
 
-module.exports = { CrowdMetaContract };
+module.exports = { DamContract };
 
-module.exports.contracts = [CrowdMetaContract];
+module.exports.contracts = [DamContract];
